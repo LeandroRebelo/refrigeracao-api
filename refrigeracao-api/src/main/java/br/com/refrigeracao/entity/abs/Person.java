@@ -2,17 +2,31 @@ package br.com.refrigeracao.entity.abs;
 
 import java.time.LocalDate;
 
-import br.com.refrigeracao.value.object.Adress;
-import br.com.refrigeracao.value.object.Document;
-import br.com.refrigeracao.value.object.Name;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.MappedSuperclass;
 
+import br.com.refrigeracao.entity.value.object.Adress;
+import br.com.refrigeracao.entity.value.object.Document;
+import br.com.refrigeracao.entity.value.object.Name;
+
+
+@MappedSuperclass
 public abstract class Person {
 
-	private Integer Id;
+	@Embedded
 	private Name name;
+	
+	@Embedded
 	private Document document;
+	
+	@Embedded
 	private Adress adress;
+	
+	@Column
 	private LocalDate birthDate;
+	
+	@Column
 	private Integer phone;
 	
 	public Person(Name name, Document document, Adress adress, LocalDate birthDate, Integer phone) {
@@ -20,9 +34,10 @@ public abstract class Person {
 		this.document = document;
 		this.adress = adress;
 		this.birthDate = birthDate;
-		this.setPhone(phone);
+		this.phone = phone;
 	}
 
+	/*
 	public Integer getId() {
 		return Id;
 	}
@@ -30,6 +45,7 @@ public abstract class Person {
 	public void setId(Integer id) {
 		Id = id;
 	}
+	*/
 
 	public Name getName() {
 		return name;

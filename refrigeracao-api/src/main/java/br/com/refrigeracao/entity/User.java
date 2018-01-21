@@ -1,23 +1,42 @@
 package br.com.refrigeracao.entity;
 
-public class User {
+import java.time.LocalDate;
 
-	private Integer id;
-	private String user;
-	private String password;
-	private Mechanical mechanical;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import br.com.refrigeracao.entity.abs.Person;
+import br.com.refrigeracao.entity.value.object.Adress;
+import br.com.refrigeracao.entity.value.object.Document;
+import br.com.refrigeracao.entity.value.object.Name;
+
+@Entity
+public class User extends Person {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
+	@SequenceGenerator(name = "user_seq_gen", sequenceName = "user_id_seq")
+	private Integer Id;
 	
-	public User(String user, String password, Mechanical mechanical) {
+	@Column(length = 50)
+	private String user;
+
+	@Column(length = 50)
+	private String password;
+
+	@OneToOne
+	private Mechanical mechanical;
+
+	public User(String user, String password, Mechanical mechanical, Name name, Document document, Adress localAdress,
+			LocalDate birthDate, Integer phone) {
+		super(name, document, localAdress, birthDate, phone);
 		this.user = user;
 		this.password = password;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getUser() {

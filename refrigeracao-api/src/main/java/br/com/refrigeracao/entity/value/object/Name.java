@@ -1,9 +1,20 @@
-package br.com.refrigeracao.value.object;
+package br.com.refrigeracao.entity.value.object;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Name {
 
+	@Column(length=200)
 	private String name;
+	
+	@Column(length=200)
 	private String lastName;
+	
+	public Name() {	
+		
+	}
 	
 	public Name(String name, String lastName) {
 		this.name = name;

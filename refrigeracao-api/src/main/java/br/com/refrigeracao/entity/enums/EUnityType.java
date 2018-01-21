@@ -1,4 +1,4 @@
-package br.com.refrigeracao.enums;
+package br.com.refrigeracao.entity.enums;
 
 public enum EUnityType {
 

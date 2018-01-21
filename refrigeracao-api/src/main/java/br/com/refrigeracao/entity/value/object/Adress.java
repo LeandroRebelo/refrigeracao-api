@@ -1,17 +1,33 @@
-package br.com.refrigeracao.value.object;
+package br.com.refrigeracao.entity.value.object;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
 
 import br.com.refrigeracao.entity.City;
 
+@Embeddable
 public class Adress {
 
+	@Column(length=200)
 	private String street;
-	private String number;
+	
+	@Column(length=50)
+	private String adressNumber;
+	
+	@Column(length=200)
 	private String neighborhood;
+	
+	@ManyToOne
 	private City city;
 	
-	public Adress(String street, String number, String neighborhood, City city) {
+	public Adress() {	
+		
+	}
+	
+	public Adress(String street, String adressNumber, String neighborhood, City city) {
 		this.street = street;
-		this.number = number;
+		this.adressNumber = adressNumber;
 		this.neighborhood = neighborhood;
 		this.city = city;
 	}
@@ -24,12 +40,12 @@ public class Adress {
 		this.street = street;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getAdressNumber() {
+		return adressNumber;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setAdressNumber(String adressNumber) {
+		this.adressNumber = adressNumber;
 	}
 
 	public String getNeighborhood() {
