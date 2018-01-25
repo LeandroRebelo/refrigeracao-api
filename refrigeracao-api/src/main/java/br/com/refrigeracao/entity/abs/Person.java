@@ -37,16 +37,6 @@ public abstract class Person {
 		this.phone = phone;
 	}
 
-	/*
-	public Integer getId() {
-		return Id;
-	}
-
-	public void setId(Integer id) {
-		Id = id;
-	}
-	*/
-
 	public Name getName() {
 		return name;
 	}
