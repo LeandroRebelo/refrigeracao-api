@@ -1,14 +1,15 @@
 package br.com.refrigeracao.entity.abs;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import br.com.refrigeracao.entity.Unity;
 
@@ -16,9 +17,9 @@ import br.com.refrigeracao.entity.Unity;
 public abstract class Item {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq_gen")
-	@SequenceGenerator(name = "item_seq_gen", sequenceName = "item_id_seq")
-	private Integer id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	private UUID id;
 	
 	@Column(length=200)
 	private String name;
@@ -35,11 +36,11 @@ public abstract class Item {
 		this.unity = unity;
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

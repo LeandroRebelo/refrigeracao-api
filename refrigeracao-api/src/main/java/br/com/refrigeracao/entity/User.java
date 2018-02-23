@@ -4,11 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
 import br.com.refrigeracao.entity.abs.Person;
 import br.com.refrigeracao.entity.value.object.Adress;
@@ -18,11 +14,6 @@ import br.com.refrigeracao.entity.value.object.Name;
 @Entity
 public class User extends Person {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
-	@SequenceGenerator(name = "user_seq_gen", sequenceName = "user_id_seq")
-	private Integer Id;
-	
 	@Column(length = 50)
 	private String user;
 

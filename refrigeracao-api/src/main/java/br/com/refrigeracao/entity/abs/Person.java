@@ -1,10 +1,15 @@
 package br.com.refrigeracao.entity.abs;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import br.com.refrigeracao.entity.value.object.Adress;
 import br.com.refrigeracao.entity.value.object.Document;
@@ -14,6 +19,11 @@ import br.com.refrigeracao.entity.value.object.Name;
 @MappedSuperclass
 public abstract class Person {
 
+	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	private UUID id;
+	
 	@Embedded
 	private Name name;
 	
@@ -35,6 +45,10 @@ public abstract class Person {
 		this.adress = adress;
 		this.birthDate = birthDate;
 		this.phone = phone;
+	}
+	
+	public UUID getId() {
+		return id;
 	}
 
 	public Name getName() {

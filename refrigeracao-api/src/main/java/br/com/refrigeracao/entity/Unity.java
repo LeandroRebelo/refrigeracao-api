@@ -1,13 +1,15 @@
 package br.com.refrigeracao.entity;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import br.com.refrigeracao.entity.enums.EUnityType;
 
@@ -16,9 +18,9 @@ import br.com.refrigeracao.entity.enums.EUnityType;
 public class Unity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="unity_seq_gen")
-	@SequenceGenerator(name="unity_seq_gen", sequenceName = "unity_id_seq")
-	private Integer id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	private UUID id;
 	
 	@Column(length=200)
 	private String name;
@@ -26,21 +28,16 @@ public class Unity {
 	@Enumerated(EnumType.ORDINAL)
 	private EUnityType unityType;
 	
-	public Unity() {
-		
-	}
-	
-	public Unity(Integer id, String name, EUnityType unityType) {
-		this.id = id;
+	public Unity(String name, EUnityType unityType) {
 		this.name = name;
 		this.unityType = unityType;
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
