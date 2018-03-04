@@ -5,9 +5,10 @@ import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 import br.com.refrigeracao.entity.City;
+import br.com.refrigeracao.entity.value.object.itrf.ValueObject;
 
 @Embeddable
-public class Adress {
+public class Adress implements ValueObject {
 
 	@Column(length=200)
 	private String street;
@@ -62,5 +63,10 @@ public class Adress {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	@Override
+	public boolean validade() {
+		return false;
 	}
 }

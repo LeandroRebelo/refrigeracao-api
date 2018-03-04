@@ -6,10 +6,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import br.com.refrigeracao.entity.enums.EDocumentType;
+import br.com.refrigeracao.entity.value.object.itrf.ValueObject;
 
 
 @Embeddable
-public class Document {
+public class Document implements ValueObject {
 	
 	@Column
 	private Integer documentNumber;
@@ -41,9 +42,9 @@ public class Document {
 	public void setDocumentType(EDocumentType documentType) {
 		this.documentType = documentType;
 	}
-	
-	public boolean Validate() {
-		return true;
+
+	@Override
+	public boolean validade() {
+		return false;
 	}
-	
 }

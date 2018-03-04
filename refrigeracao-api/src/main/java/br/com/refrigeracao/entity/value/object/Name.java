@@ -3,8 +3,10 @@ package br.com.refrigeracao.entity.value.object;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import br.com.refrigeracao.entity.value.object.itrf.ValueObject;
+
 @Embeddable
-public class Name {
+public class Name implements ValueObject {
 
 	@Column(length=200)
 	private String name;
@@ -35,5 +37,10 @@ public class Name {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	@Override
+	public boolean validade() {
+		return false;
 	}
 }
