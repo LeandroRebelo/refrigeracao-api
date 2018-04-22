@@ -22,9 +22,7 @@ public class Adress implements ValueObject {
 	@ManyToOne
 	private City city;
 	
-	public Adress() {	
-		
-	}
+	public Adress() {}
 	
 	public Adress(String street, String adressNumber, String neighborhood, City city) {
 		this.street = street;
@@ -66,7 +64,7 @@ public class Adress implements ValueObject {
 	}
 
 	@Override
-	public boolean validade() {
+	public boolean validate() {
 		return false;
 	}
 }

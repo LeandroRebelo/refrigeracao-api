@@ -23,11 +23,14 @@ public class User extends Person {
 	@OneToOne
 	private Mechanical mechanical;
 
+	public User() {}
+	
 	public User(String user, String password, Mechanical mechanical, Name name, Document document, Adress localAdress,
 			LocalDate birthDate, Integer phone) {
 		super(name, document, localAdress, birthDate, phone);
 		this.user = user;
 		this.password = password;
+		this.mechanical = mechanical;
 	}
 
 	public String getUser() {

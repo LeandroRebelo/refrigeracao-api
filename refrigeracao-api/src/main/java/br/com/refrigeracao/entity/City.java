@@ -23,6 +23,8 @@ public class City {
 	@Column(length=2, unique=true)
 	private char uf;
 	
+	public City() {}
+	
 	public City(String name, char uf) {
 		this.name = name;
 		this.uf = uf;

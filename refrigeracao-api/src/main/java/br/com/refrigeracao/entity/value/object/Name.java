@@ -14,9 +14,7 @@ public class Name implements ValueObject {
 	@Column(length=200)
 	private String lastName;
 	
-	public Name() {	
-		
-	}
+	public Name() {}
 	
 	public Name(String name, String lastName) {
 		this.name = name;
@@ -40,7 +38,7 @@ public class Name implements ValueObject {
 	}
 
 	@Override
-	public boolean validade() {
+	public boolean validate() {
 		return false;
 	}
 }

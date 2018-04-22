@@ -44,7 +44,7 @@ public class Document implements ValueObject {
 	}
 
 	@Override
-	public boolean validade() {
+	public boolean validate() {
 		return false;
 	}
 }

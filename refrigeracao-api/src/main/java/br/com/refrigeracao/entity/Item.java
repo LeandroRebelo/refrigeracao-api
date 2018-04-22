@@ -1,34 +1,42 @@
-package br.com.refrigeracao.entity.abs;
+package br.com.refrigeracao.entity;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import br.com.refrigeracao.entity.Unity;
+import br.com.refrigeracao.entity.enums.EItemType;
 
-@MappedSuperclass
-public abstract class Item {
+@Entity
+public class Item {
 
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	private UUID id;
-	
-	@Column(length=200)
+
+	@Column(length = 200)
 	private String name;
-	
+
 	@Column
 	private BigDecimal price;
-	
+
+	@Enumerated(EnumType.STRING)
+	private EItemType itemType;
+
 	@ManyToOne
 	private Unity unity;
+
+	public Item() {
+	}
 
 	public Item(String name, BigDecimal price, Unity unity) {
 		this.name = name;
@@ -67,5 +75,4 @@ public abstract class Item {
 	public void setUnity(Unity unity) {
 		this.unity = unity;
 	}
-	
 }

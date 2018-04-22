@@ -46,6 +46,8 @@ public abstract class Person {
 		this.birthDate = birthDate;
 		this.phone = phone;
 	}
+
+	public Person() {}
 	
 	public UUID getId() {
 		return id;

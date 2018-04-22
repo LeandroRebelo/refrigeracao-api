@@ -28,6 +28,8 @@ public class Unity {
 	@Enumerated(EnumType.ORDINAL)
 	private EUnityType unityType;
 	
+	public Unity() {}
+	
 	public Unity(String name, EUnityType unityType) {
 		this.name = name;
 		this.unityType = unityType;
