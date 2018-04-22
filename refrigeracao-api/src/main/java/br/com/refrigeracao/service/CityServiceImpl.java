@@ -28,7 +28,7 @@ public class CityServiceImpl implements CityService<City> {
 
 	@Override
 	public City getByID(UUID id) {
-		return cityRepository.getOne(id) ;
+		return cityRepository.getOne(id);
 	}
 
 	@Override

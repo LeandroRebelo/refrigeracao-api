@@ -21,11 +21,11 @@ public class City {
 	private String name;
 	
 	@Column(length=2, unique=true)
-	private char uf;
+	private String uf;
 	
 	public City() {}
 	
-	public City(String name, char uf) {
+	public City(String name, String uf) {
 		this.name = name;
 		this.uf = uf;
 	}
@@ -46,11 +46,11 @@ public class City {
 		this.name = name;
 	}
 
-	public char getUf() {
+	public String getUf() {
 		return uf;
 	}
 
-	public void setUf(char uf) {
+	public void setUf(String uf) {
 		this.uf = uf;
 	}	
 }
